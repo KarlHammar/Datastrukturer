@@ -44,6 +44,16 @@ public class DynamicArray<T> {
         this.array[index] = value;
     }
 
+    public void deleteLast(){
+        this.array[size] = null;
+    }
+    //Problem with halving size when only half full? Well if you are on the edge and go back and forth,
+    //the array will be copied in its entirety each time, and then we are back to quadratic time as in
+    //the case with non dynamic arrays. Although i personall find this scenario unlikely, there is a
+    //simple fix: Just wait until the array is only a third full ,and only then half its size. The
+    //important part is that we are more "free" in increasing its size than decreasing it, so that it
+    //has som leeway.git 
+
     public static void main(String[] args){
         DynamicArray<String> a = new DynamicArray<>(args);
         a.add("String2");
